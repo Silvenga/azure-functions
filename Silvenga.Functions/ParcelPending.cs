@@ -22,9 +22,7 @@ namespace Silvenga.Functions
             log.Info("C# HTTP trigger function processed a request.");
 
             // Get request body
-            dynamic data = await req.Content.ReadAsAsync<object>();
-
-            var text = (string) data.email;
+            var text = await req.Content.ReadAsStringAsync();
 
             text = Regex.Replace(text, "<br>", "\n");
 
