@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26510.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silvenga.Functions", "Silvenga.Functions\Silvenga.Functions.csproj", "{47168C83-B70F-4D13-86E1-5C8FCD9B4BB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Silvenga.Functions.Tests", "Silvenga.Functions.Tests\Silvenga.Functions.Tests.csproj", "{EEAF1B92-2E2B-457A-B473-254D8E0B5E34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{47168C83-B70F-4D13-86E1-5C8FCD9B4BB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47168C83-B70F-4D13-86E1-5C8FCD9B4BB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47168C83-B70F-4D13-86E1-5C8FCD9B4BB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEAF1B92-2E2B-457A-B473-254D8E0B5E34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEAF1B92-2E2B-457A-B473-254D8E0B5E34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEAF1B92-2E2B-457A-B473-254D8E0B5E34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEAF1B92-2E2B-457A-B473-254D8E0B5E34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

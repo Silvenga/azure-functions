@@ -23,25 +23,43 @@ namespace Silvenga.Functions
 
             // Get request body
             var text = await req.Content.ReadAsStringAsync();
+            var parsedResults = Parse(text);
 
+            return req.CreateResponse(HttpStatusCode.OK, parsedResults);
+        }
+
+        public class ParsedResult
+        {
+            public string RecipientName { get; set; }
+            public string RecipientLocation { get; set; }
+            public string PickupDate { get; set; }
+            public string AccessCode { get; set; }
+            public string LockerLocation { get; set; }
+            public string LockerNumber { get; set; }
+            public string PackageBarcode { get; set; }
+            public string PackageCarrier { get; set; }
+        }
+
+        public static ParsedResult Parse(string text)
+        {
             text = Regex.Replace(text, "<br>", "\n");
 
             var parser = new HtmlParser();
             var document = parser.Parse(text).Body.TextContent;
 
-            var parsedResults = new
+            var parsedResults = new ParsedResult
             {
                 RecipientName = ParseFirstGroup(document, "Dear (.+?):"),
-                RecipientLocation = ParseFirstGroup(document, @"Oh happy day, you had a parcel delivered to (.+?)\."),
-                PickupDate = ParseFirstGroup(document, @"pick it up by midnight on ([\d-]{10})\."),
+                RecipientLocation = ParseFirstGroup(document, @"Oh happy day, you had a parcel delivered to ([\w\W]+?)\."),
+                PickupDate = ParseFirstGroup(document, @"([\d-]{10})\."),
                 AccessCode = ParseFirstGroup(document, @"Your access code is ([\d]{6})"),
                 LockerLocation = ParseFirstGroup(document, @"Your locker is located: (.+) -"),
                 LockerNumber = ParseFirstGroup(document, @"Your Locker number is: (\d+)"),
                 PackageBarcode = ParseFirstGroup(document, @"Your tracking #\/barcode is: (.+)"),
-                PackageCarrier = ParseFirstGroup(document, @"Your package was delivered by (.+)"),
+                PackageCarrier = ParseFirstGroup(document, @"Your package was delivered by (.+)")
             };
 
-            return req.CreateResponse(HttpStatusCode.OK, parsedResults);
+            return parsedResults;
         }
 
         private static string ParseFirstGroup(string input, string regex)
@@ -52,7 +70,7 @@ namespace Silvenga.Functions
             }
 
             var value = Regex.Match(input, regex).Groups[1].Value;
-            return value.Trim();
+            return Regex.Replace(value.Trim(), "\r?\n", "");
         }
     }
 }
