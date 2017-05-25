@@ -59,6 +59,12 @@ namespace Silvenga.Functions
                 PackageCarrier = ParseFirstGroup(document, @"Your package was delivered by (.+)")
             };
 
+            if (parsedResults.AccessCode != null)
+            {
+                var code = parsedResults.AccessCode;
+                parsedResults.AccessCode = $"{code.Substring(0, 2)} {code.Substring(2, 2)} {code.Substring(4, 2)}";
+            }
+
             return parsedResults;
         }
 

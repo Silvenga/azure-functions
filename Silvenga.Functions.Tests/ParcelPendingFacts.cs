@@ -25,7 +25,7 @@ namespace Silvenga.Functions.Tests
             var result = ParcelPending.Parse(_text);
 
             // Assert
-            result.AccessCode.Should().Be("777777");
+            result.AccessCode.Should().Be("12 34 56");
         }
 
         [Fact]
