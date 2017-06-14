@@ -62,7 +62,7 @@ namespace Silvenga.Functions
             if (parsedResults.AccessCode != null)
             {
                 var code = parsedResults.AccessCode;
-                parsedResults.AccessCode = $"{code.Substring(0, 2)} {code.Substring(2, 2)} {code.Substring(4, 2)}";
+                parsedResults.AccessCode = $"{code.Substring(0, 3)} - {code.Substring(3, 3)}";
             }
 
             return parsedResults;
