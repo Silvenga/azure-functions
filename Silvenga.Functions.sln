@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26510.0
+VisualStudioVersion = 15.0.26606.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silvenga.Functions", "Silvenga.Functions\Silvenga.Functions.csproj", "{47168C83-B70F-4D13-86E1-5C8FCD9B4BB0}"
 EndProject
