@@ -51,7 +51,7 @@ namespace Silvenga.Functions
             {
                 RecipientName = ParseFirstGroup(document, "Dear (.+?):"),
                 RecipientLocation = ParseFirstGroup(document, @"Oh happy day, you had a parcel delivered to ([\w\W]+?)\."),
-                PickupDate = ParseFirstGroup(document, @"([\d-]{10})\."),
+                PickupDate = ParseFirstGroup(document, @"\b([\d-]{10})\."),
                 AccessCode = ParseFirstGroup(document, @"Your access code is ([\d]{6})"),
                 LockerLocation = ParseFirstGroup(document, @"Your locker is located: (.+) -"),
                 LockerNumber = ParseFirstGroup(document, @"Your Locker number is: (\d+)"),
@@ -72,7 +72,7 @@ namespace Silvenga.Functions
         {
             if (!Regex.IsMatch(input, regex))
             {
-                return null;
+                return "";
             }
 
             var value = Regex.Match(input, regex).Groups[1].Value;

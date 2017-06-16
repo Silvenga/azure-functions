@@ -97,5 +97,31 @@ namespace Silvenga.Functions.Tests
             // Assert
             result.RecipientName.Should().Be("Mark");
         }
+
+        [Fact]
+        public void Can_parse_when_no_barcode_exists()
+        {
+            const string samplePath = @"Assets\sample-pp-no-barcode.html";
+            var text = File.ReadAllText(samplePath);
+
+            // Act
+            var result = ParcelPending.Parse(text);
+
+            // Assert
+            result.PackageBarcode.Should().Be("");
+        }
+
+        [Fact]
+        public void Can_parse_when_no_pickup_date_exists()
+        {
+            const string samplePath = @"Assets\sample-pp-no-barcode.html";
+            var text = File.ReadAllText(samplePath);
+
+            // Act
+            var result = ParcelPending.Parse(text);
+
+            // Assert
+            result.PickupDate.Should().Be("");
+        }
     }
 }
