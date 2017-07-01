@@ -123,5 +123,18 @@ namespace Silvenga.Functions.Tests
             // Assert
             result.PickupDate.Should().Be("");
         }
+
+        [Fact]
+        public void Can_parse_when_access_code_has_colon()
+        {
+            const string samplePath = @"Assets\sample-pp-no-pickup-date.html";
+            var text = File.ReadAllText(samplePath);
+
+            // Act
+            var result = ParcelPending.Parse(text);
+
+            // Assert
+            result.PickupDate.Should().Be("");
+        }
     }
 }

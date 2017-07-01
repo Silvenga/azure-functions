@@ -52,7 +52,7 @@ namespace Silvenga.Functions
                 RecipientName = ParseFirstGroup(document, "Dear (.+?):"),
                 RecipientLocation = ParseFirstGroup(document, @"Oh happy day, you had a parcel delivered to ([\w\W]+?)\."),
                 PickupDate = ParseFirstGroup(document, @"\b([\d-]{10})\."),
-                AccessCode = ParseFirstGroup(document, @"Your access code is ([\d]{6})"),
+                AccessCode = ParseFirstGroup(document, @"Your access code is:? ([\d]{6})"),
                 LockerLocation = ParseFirstGroup(document, @"Your locker is located: (.+) -"),
                 LockerNumber = ParseFirstGroup(document, @"Your Locker number is: (\d+)"),
                 PackageBarcode = ParseFirstGroup(document, @"Your tracking #\/barcode is: (.+)"),
