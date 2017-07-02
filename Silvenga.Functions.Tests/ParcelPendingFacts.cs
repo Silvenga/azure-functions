@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 using FluentAssertions;
 
@@ -121,7 +122,7 @@ namespace Silvenga.Functions.Tests
             var result = ParcelPending.Parse(text);
 
             // Assert
-            result.PickupDate.Should().Be("");
+            DateTime.TryParse(result.PickupDate, out _).Should().BeTrue();
         }
 
         [Fact]
@@ -134,7 +135,7 @@ namespace Silvenga.Functions.Tests
             var result = ParcelPending.Parse(text);
 
             // Assert
-            result.PickupDate.Should().Be("");
+            DateTime.TryParse(result.PickupDate, out _).Should().BeTrue();
         }
     }
 }

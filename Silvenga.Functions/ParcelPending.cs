@@ -1,3 +1,5 @@
+using System;
+using System.Globalization;
 using System.Net;
 using System.Net.Http;
 using System.Text.RegularExpressions;
@@ -51,7 +53,7 @@ namespace Silvenga.Functions
             {
                 RecipientName = ParseFirstGroup(document, "Dear (.+?):"),
                 RecipientLocation = ParseFirstGroup(document, @"Oh happy day, you had a parcel delivered to ([\w\W]+?)\."),
-                PickupDate = ParseFirstGroup(document, @"\b([\d-]{10})\."),
+                PickupDate = ParseFirstGroup(document, @"\b([\d-]{10})\.", DateTime.Now.AddDays(3).ToString(CultureInfo.InvariantCulture)),
                 AccessCode = ParseFirstGroup(document, @"Your access code is:? ([\d]{6})"),
                 LockerLocation = ParseFirstGroup(document, @"Your locker is located: (.+) -"),
                 LockerNumber = ParseFirstGroup(document, @"Your Locker number is: (\d+)"),
@@ -68,11 +70,11 @@ namespace Silvenga.Functions
             return parsedResults;
         }
 
-        private static string ParseFirstGroup(string input, string regex)
+        private static string ParseFirstGroup(string input, string regex, string defaultValue = "")
         {
             if (!Regex.IsMatch(input, regex))
             {
-                return "";
+                return defaultValue;
             }
 
             var value = Regex.Match(input, regex).Groups[1].Value;
